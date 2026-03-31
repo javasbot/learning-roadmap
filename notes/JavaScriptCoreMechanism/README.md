@@ -1,9 +1,4 @@
-
-
 # JavaScript 事件循环（Event Loop）权威解析
-
----
-
 ## 一、权威标准文档
 
 | 来源 | 链接 | 说明 |
@@ -29,7 +24,7 @@
 │  ┌─────────────┐                                        │
 │  │             │    每轮循环（iteration）:               │
 │  │  Call Stack │    ┌──────────────────────────────┐     │
-│  │  (执行栈)   │    │ 1. 从 Task Queue 取一个任务   │     │
+│  │  (执行栈)   │    │ 1. 从 Task Queue 取首个可执行任务   │     │
 │  │             │    │    放入 Call Stack 执行       │     │
 │  └──────┬──────┘    │                              │     │
 │         │           │ 2. 执行完毕后，清空所有       │     │
@@ -49,20 +44,16 @@
 
 ### 2.2 宏任务 vs 微任务
 
-```
-┌──────────────────────────┬──────────────────────────────┐
-│      Macrotask (宏任务)   │      Microtask (微任务)       │
-├──────────────────────────┼──────────────────────────────┤
-│  script (整体代码)        │  Promise.then / catch / finally│
-│  setTimeout              │  queueMicrotask              │
-│  setInterval             │  MutationObserver (浏览器)    │
-│  setImmediate (Node)     │  process.nextTick (Node)     │
-│  I/O callbacks           │                              │
-│  UI rendering (浏览器)    │                              │
-│  MessageChannel          │                              │
-│  requestAnimationFrame   │                              │
-└──────────────────────────┴──────────────────────────────┘
-```
+| Macrotask (宏任务) | Microtask (微任务) |
+|--------------------|--------------------|
+| script(整体代码) | Promise.then/catch/finally |
+| setTimeout | queueMicrotask |
+| setInterval | MutationObserver(浏览器) |
+| setImmediate(Node) | process.nextTick(Node) |
+| I/O callbacks | |
+| UI rendering(浏览器) | |
+| MessageChannel | |
+| requestAnimationFrame | |
 
 ### 2.3 核心规则总结
 
