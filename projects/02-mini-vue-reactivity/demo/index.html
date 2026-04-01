@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>手写 Mini Vue3 Reactivity</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; display: flex; justify-content: center; background: #fafafa; padding: 2rem; }
+    #app { background: white; padding: 2rem 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
+    h1 { color: #42b883; }
+    .counter { font-size: 3rem; font-weight: bold; color: #35495e; margin: 1rem 0; }
+    .double { font-size: 1.5rem; color: #888; }
+    button { background: #42b883; color: white; border: none; font-size: 1.2rem; padding: 10px 20px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+    button:hover { background: #33a06f; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Vue 响应式系统引擎</h1>
+    <div class="counter" id="count-display">0</div>
+    <div class="double" id="double-display">双倍: 0</div>
+    <br/>
+    <button id="btn">增加 Count</button>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>流式 Markdown 渲染引擎</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #212121; color: #ececec; line-height: 1.6; padding: 2rem 15%; }
+    .header { text-align: center; margin-bottom: 2rem; color: #fff; }
+    #chat-container { padding: 20px; border-radius: 8px; background: #2f2f2f; min-height: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    h1 { color: #58a6ff; font-size: 1.5rem; }
+    p { font-size: 1.05rem; }
+    pre { background: #161b22; padding: 16px; border-radius: 6px; overflow-x: auto; color: #c9d1d9; border: 1px solid #30363d;}
+    .typing-cursor { animation: blink 1s step-end infinite; color: #58a6ff; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .btn { display: block; width: 150px; text-align: center; margin: 2rem auto; padding: 12px; font-size: 1rem; background: #238636; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    .btn:hover { background: #2ea043; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>🤖 AI Native: 高性能流式 Markdown 渲染引擎</h2>
+    <p>验证：1. 不完整的大码块闭合容错 2. rAF 高频渲染防抖</p>
+  </div>
+  
+  <div id="chat-container"></div>
+  <button class="btn" id="start-btn">模拟 LLM 流返回</button>
+
+  <script type="module">
+    import { StreamingRenderer } from './core/renderer.js';
+
+    // 假设这是大模型缓慢吐出来的文本流
+    const mockModelResponse = `你好，我是你的 P10 AI 导师。
+今天我们来学习怎么写一个 **快排算法**。
+
+这是一段示例代码：
+\`\`\`javascript
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[arr.length - 1];
+  const left = [];
+  const right = [];
+  
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) left.push(arr[i]);
+    else right.push(arr[i]);
+  }
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+\`\`\`
+
+这是一种**时间换空间**的经典算法。`;
+
+    const renderer = new StreamingRenderer('chat-container');
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+      document.getElementById('start-btn').disabled = true;
+      document.getElementById('chat-container').innerHTML = ''; // 清空
+      renderer.parser.buffer = ''; // 重置环境
+      renderer.parser.isInCodeBlock = false;
+      
+      let cursor = 0;
+      // 用非常密集的定时器模拟 HTTP SSE 流的高频触发 (例如每 20 毫秒来几个字)
+      const timer = setInterval(() => {
+        if (cursor >= mockModelResponse.length) {
+          clearInterval(timer);
+          document.getElementById('start-btn').disabled = false;
+          return;
+        }
+
+        // 随机吐 1 到 5 个字模拟真实网络的 Token 生成速度不均匀
+        const chunkLength = Math.floor(Math.random() * 5) + 1;
+        const textChunk = mockModelResponse.substring(cursor, cursor + chunkLength);
+        
+        // 我们只管疯狂塞，由内部引擎利用 requestAnimationFrame 解决主线程拥挤
+        renderer.receiveToken(textChunk);
+        
+        cursor += chunkLength;
+      }, 30); 
+    });
+  </script>
+</body>
+</html>

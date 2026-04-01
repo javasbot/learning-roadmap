@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>手写 qiankun 微前端主容器</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; margin: 0; background-color: #f0f2f5; display: flex; height: 100vh;}
+    .sidebar { width: 250px; background: #001529; color: white; padding: 2rem 0; }
+    .sidebar button { display: block; width: 100%; padding: 1rem 2rem; background: none; color: #a6adb4; border: none; text-align: left; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+    .sidebar button:hover, .sidebar button.active { color: white; background: #1890ff; }
+    .main-content { flex: 1; padding: 2rem; display: flex; flex-direction: column; }
+    .header { padding-bottom: 2rem; border-bottom: 1px solid #ddd; margin-bottom: 2rem; }
+    #subapp-container { background: white; flex: 1; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .error-box { background: #fff1f0; color: #cf1322; padding: 1rem; margin-top: 1rem; border-radius: 4px; border: 1px solid #ffa39e; display: none; }
+  </style>
+</head>
+<body>
+  
+  <div class="sidebar">
+    <button onclick="navigate('/vue')">📦 加载 Vue 订单模块</button>
+    <button onclick="navigate('/react')">⚛️ 加载 React 会员模块</button>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h2>微平台基座 (Base App)</h2>
+      <!-- 验证沙箱是否成功隔离 -->
+      <button onclick="checkGlobalVariable()">点击验证：主应用的原本 window 坏了吗？</button>
+      <div id="sandbox-result" class="error-box"></div>
+    </div>
+    
+    <!-- 子应用全部向这里内聚！ -->
+    <div id="subapp-container">
+      <h3>⬅️ 点击左侧菜单，动态无缝将远端代码抓下来并嵌入运行！</h3>
+    </div>
+  </div>
+
+  <script type="module">
+    import { registerMicroApps, start } from './container/loader.js';
+    import { GlobalBus } from './container/bus.js';
+
+    // 假设最初主应用的全局有一个变量，子应用乱改 window 不能污名化它
+    window.globalVariable = "我是基座原来的干净变量！";
+
+    // 1. 初始化并注册所有的子应用信息
+    registerMicroApps([
+      {
+        name: 'vue-orders',
+        entry: '/app-vue/', // 在这里的模拟中等效于它远程部署在另个服务器机器的域名
+        container: '#subapp-container',
+        activeRule: '/vue'
+      },
+      {
+        name: 'react-members',
+        entry: '/app-react/',
+        container: '#subapp-container',
+        activeRule: '/react'
+      }
+    ]);
+
+    // 2. 挂载启动微前端基座
+    start();
+
+    // =============== 辅助演示代码 ===============
+    
+    // 监听导航（由于这只是演示，没有搭建真实的 vue-router）
+    window.navigate = function(path) {
+      window.history.pushState(null, null, path);
+    };
+
+    window.checkGlobalVariable = function() {
+      const box = document.getElementById('sandbox-result');
+      box.style.display = 'block';
+      if (window.globalVariable === "我是基座原来的干净变量！") {
+        box.style.background = "#f6ffed"; box.style.color = "#389e0d"; box.style.borderColor = "#b7eb8f";
+        box.innerHTML = `✅ 验证成功：虽然子应用写了 'window.globalVariable = xxx'，但被 Proxy Sandbox 完美拦截吸纳！主应用的 window 毫发无损：${window.globalVariable}`;
+      } else {
+        box.innerHTML = `🚨 惨案发生：沙箱穿透失败！主应用数据已被子应用污染为：${window.globalVariable}`;
+      }
+    }
+  </script>
+</body>
+</html>
