@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision | 个人博客</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">Vision</div>
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="container">
+            <div class="nav-brand">
+                <a href="#" class="logo">Vision</a>
+            </div>
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link">首页</a></li>
+                    <li class="nav-item"><a href="#articles" class="nav-link">文章</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+            <div class="nav-cta">
+                <a href="#subscribe" class="btn btn-outline">订阅</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <div class="hero-intro">
+                <span class="hero-badge">探索与创新</span>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">技术的</span>
+                    <span class="hero-title-line">艺术表达</span>
+                </h1>
+                <p class="hero-subtitle">记录我的技术探索、设计思考与创新实践，分享有深度的见解与经验</p>
+                <div class="hero-cta">
+                    <a href="#articles" class="btn btn-primary">阅读文章</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>向下滚动</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 文章列表 -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">最新作品</span>
+                <h2 class="section-title">精选文章</h2>
+                <p class="section-subtitle">探索前沿技术，洞察设计趋势，分享实践经验</p>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- 文章卡片 1 -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <div class="article-image">
+                            <img src="https://console.enterprise.trae.cn/api/ide/v1/text_to_image?prompt=modern%20technology%20blog%20featured%20image%2C%20dark%20moody%20aesthetic%2C%20professional%20photography%2C%20minimalist%20composition&image_size=landscape_16_9" alt="AI 时代的前端开发">
+                            <div class="article-overlay"></div>
+                        </div>
+                        <div class="article-category">技术</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">AI 时代的前端开发：变革与机遇</h3>
+                        <p class="article-excerpt">随着人工智能技术的快速发展，前端开发正在经历前所未有的变革。本文探讨 AI 如何重塑前端开发流程，以及开发者应该如何应对这一趋势...</p>
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> 2026-04-01</span>
+                            <span class="article-readtime"><i class="far fa-clock"></i> 8 分钟阅读</span>
+                        </div>
+                        <a href="#" class="article-link">
+                            <span>阅读全文</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 2 -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <div class="article-image">
+                            <img src="https://console.enterprise.trae.cn/api/ide/v1/text_to_image?prompt=minimalist%20web%20design%20concept%2C%20dark%20color%20palette%2C%20clean%20lines%2C%20modern%20aesthetic&image_size=landscape_16_9" alt="现代网页设计趋势">
+                            <div class="article-overlay"></div>
+                        </div>
+                        <div class="article-category">设计</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">2026 现代网页设计趋势：极简主义的回归</h3>
+                        <p class="article-excerpt">在经历了几年的复杂设计潮流后，极简主义正在重新成为网页设计的主流。本文分析了 2026 年的关键设计趋势，以及如何将极简主义理念应用到实际项目中...</p>
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> 2026-03-28</span>
+                            <span class="article-readtime"><i class="far fa-clock"></i> 6 分钟阅读</span>
+                        </div>
+                        <a href="#" class="article-link">
+                            <span>阅读全文</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 3 -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <div class="article-image">
+                            <img src="https://console.enterprise.trae.cn/api/ide/v1/text_to_image?prompt=software%20architecture%20diagram%2C%20dark%20background%2C%20neon%20accents%2C%20professional%20visualization&image_size=landscape_16_9" alt="微服务架构实践">
+                            <div class="article-overlay"></div>
+                        </div>
+                        <div class="article-category">架构</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">微服务架构实践：从理论到生产环境</h3>
+                        <p class="article-excerpt">微服务架构已经成为现代软件发展的重要方向，但实施过程中往往面临诸多挑战。本文分享了在实际项目中实施微服务架构的经验和最佳实践...</p>
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> 2026-03-22</span>
+                            <span class="article-readtime"><i class="far fa-clock"></i> 12 分钟阅读</span>
+                        </div>
+                        <a href="#" class="article-link">
+                            <span>阅读全文</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 4 -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <div class="article-image">
+                            <img src="https://console.enterprise.trae.cn/api/ide/v1/text_to_image?prompt=personal%20productivity%20workspace%2C%20dark%20minimalist%20desk%2C%20inspiring%20environment%2C%20moody%20lighting&image_size=landscape_16_9" alt="高效开发者的工作流">
+                            <div class="article-overlay"></div>
+                        </div>
+                        <div class="article-category">成长</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">高效开发者的工作流：如何提升编码效率</h3>
+                        <p class="article-excerpt">作为开发者，我们的时间是最宝贵的资源。本文分享了我在日常工作中使用的效率工具和工作方法，帮助你更高效地完成开发任务...</p>
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> 2026-03-15</span>
+                            <span class="article-readtime"><i class="far fa-clock"></i> 5 分钟阅读</span>
+                        </div>
+                        <a href="#" class="article-link">
+                            <span>阅读全文</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-outline">查看更多文章</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色部分 -->
+    <section class="featured">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-text">
+                    <span class="section-badge">特色专栏</span>
+                    <h2 class="section-title">设计与技术的融合</h2>
+                    <p class="featured-description">探索设计思维与技术实现的完美结合，创造既美观又实用的数字产品。</p>
+                    <div class="featured-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">精品文章</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10k+</div>
+                            <div class="stat-label">月阅读量</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">订阅用户</div>
+                        </div>
+                    </div>
+                    <a href="#articles" class="btn btn-primary">浏览专栏</a>
+                </div>
+                <div class="featured-image">
+                    <img src="https://console.enterprise.trae.cn/api/ide/v1/text_to_image?prompt=designer%20working%20on%20computer%2C%20dark%20studio%2C%20creative%20environment%2C%20moody%20lighting&image_size=landscape_16_9" alt="设计与技术的融合">
+                    <div class="featured-shape"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">关于</span>
+                <h2 class="section-title">认识我</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://console.enterprise.trae.cn/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20a%20developer%2C%20confident%2C%20dark%20background%2C%20moody%20lighting&image_size=portrait_4_3" alt="作者照片">
+                    <div class="about-shape"></div>
+                </div>
+                <div class="about-text">
+                    <p class="about-intro">我是一名热爱技术与设计的全栈开发者，拥有超过 10 年的软件开发经验。我专注于前端开发、用户体验设计和云计算架构，致力于创造既美观又实用的数字产品。</p>
+                    <p class="about-description">在这个博客中，我会分享我的技术见解、项目经验和设计理念，希望能与你一起探索技术世界的无限可能。无论是前端开发的最新趋势，还是用户体验设计的深层思考，都能在这里找到有价值的内容。</p>
+                    <div class="about-social">
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Medium">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">联系</span>
+                <h2 class="section-title">保持联系</h2>
+                <p class="section-subtitle">有任何想法或合作意向，欢迎随时联系我</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>邮箱</h3>
+                            <p>contact@visionblog.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>位置</h3>
+                            <p>中国·上海</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>工作时间</h3>
+                            <p>周一至周五 9:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" required placeholder="请输入您的邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="请输入您的留言"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅部分 -->
+    <section id="subscribe" class="subscribe">
+        <div class="container">
+            <div class="subscribe-content">
+                <div class="subscribe-text">
+                    <h2 class="subscribe-title">订阅我的博客</h2>
+                    <p class="subscribe-description">获取最新的技术文章和设计趋势，每周定期更新</p>
+                </div>
+                <div class="subscribe-form">
+                    <form action="#">
+                        <input type="email" name="email" placeholder="请输入您的邮箱地址" required>
+                        <button type="submit" class="btn btn-primary">立即订阅</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Vision</div>
+                    <p class="footer-description">探索技术与设计的无限可能</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#articles">文章</a></li>
+                        <li><a href="#about">关于</a></li>
+                        <li><a href="#contact">联系</a></li>
+                    </ul>
+                </div>
+                <div class="footer-categories">
+                    <h4>文章分类</h4>
+                    <ul>
+                        <li><a href="#">技术</a></li>
+                        <li><a href="#">设计</a></li>
+                        <li><a href="#">架构</a></li>
+                        <li><a href="#">成长</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>关注我</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vision. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
